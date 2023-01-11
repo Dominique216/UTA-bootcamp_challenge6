@@ -1,0 +1,112 @@
+
+header {
+    height: 10vh;
+    width: 100vw;
+    background-color: navy;
+    color: white;
+    text-align: center;
+    font-size: 2.0rem;
+}
+
+h1 {
+    padding-top: 1.5%;
+}
+
+.search-bar {
+    margin-top: 1%;
+    margin-left: 3%;
+    width: 25%;
+    border-bottom: solid 1px gray;
+}
+
+#searchtitle {
+    font-size: 1.5rem;
+}
+
+h2, input, .search-btn{  
+    margin-bottom: 5%;
+    width: 100%;
+}
+
+input, .search-btn{
+    height: 5vh;
+}
+
+input{
+    padding-left: 2%;
+}
+
+.search-btn {
+    background-color: rgb(109, 156, 243);
+    color: white;
+    box-shadow: none;
+    border: none;
+    border-radius: 6px;
+
+}
+
+
+.last-search-section{
+    margin: 3%;
+    width: 25%;
+}
+
+.last-search {
+    margin-bottom: 5%;
+    width: 100%;
+    height: 5vh;
+    background-color: rgb(149, 146, 146);
+    color: white;
+    box-shadow: none;
+    border: none;
+    border-radius: 6px;
+}
+
+.current-day-forecast {
+    margin-top: -40vh;
+    margin-left: 30vw;
+    height: 25vh;
+    width: 65vw;
+    border: solid black 1px
+}
+
+.current-title {
+    padding: 2% 0 0 2%;
+    font-size: 1.5rem;
+    margin-bottom: 2.5%;
+}
+
+.curr-temp, .curr-wind, .curr-hum {
+    padding: 1% 0 0 2%;
+}
+
+.five-day-forecast {
+    display: flex;
+    height: 35vh;
+    width: 70vw;
+    margin-left: 27.8vw;
+}
+
+.day-card { 
+    color: white;
+    height: 25vh;
+    width: 50vw;
+    margin: 8% 3%;
+    background-color: rgb(9, 9, 47);
+}
+
+h3{
+    position: absolute;
+    margin:2% 0 0 2%;
+}
+
+h4 {
+    margin-left: 2%;
+    padding-top: 5%;
+    margin-bottom: 5%;
+}
+
+.temp, .wind, .hum {
+    margin-left: 2%;
+    padding-top: 10% 
+}
