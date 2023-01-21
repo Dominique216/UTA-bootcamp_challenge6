@@ -1,8 +1,9 @@
 
-
+// selects search button and input
 var search = document.querySelector('.search-btn');
 var Searchcity = document.getElementById('city');
 
+// saves the input to local storage
 function setLastSearch(city) {
     lastSeach = {
         lastCity: city
@@ -11,6 +12,8 @@ function setLastSearch(city) {
     localStorage.setItem('lastSearch', JSON.stringify(lastSeach))
 }
 
+// gets searched city from local and adds a button with city name
+// adds functionality to the lasted search buttons
 function getLastSearch() {
     var lastCitySearch = JSON.parse(localStorage.getItem("lastSearch")) 
     if(lastCitySearch.lastCity !== '') {
@@ -28,7 +31,7 @@ function getLastSearch() {
     }
 }
 
-
+// getting and setting current weather data from current weather API
 function getCurrWeather(lat, lon) {
     currWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=43d8ab20052afee7eb5ccc2b3db69764&units=imperial'
 
@@ -49,7 +52,7 @@ function getCurrWeather(lat, lon) {
         })
 }
 
-
+// getting and setting 5-day-forecast data from  5-day-forecast API
 function getWeather(lat, lon) {
     weatherUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=43d8ab20052afee7eb5ccc2b3db69764&units=imperial'
 
@@ -103,6 +106,7 @@ function getWeather(lat, lon) {
         })  
 }
 
+// getting the lattitude and longitude from the city that is input
 function getCityCoordinates (city) {
     requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city +'&limit=1&appid=43d8ab20052afee7eb5ccc2b3db69764';
     fetch(requestUrl)
@@ -117,6 +121,7 @@ function getCityCoordinates (city) {
         })
 }
 
+// gets and sets the correct date using dayjs
 function getDay(city) {
     var date = dayjs().format('MM/DD/YYYY')
     var currDay = $('.current-title')
@@ -128,11 +133,13 @@ function getDay(city) {
     }
 }
 
+// removes the class of none from weather information
 function removeNone() {
     $('#currWeather').removeClass('none')
     $('#allCards').removeClass('none')
 }
 
+// runs all functions once the search button is pressed
 search.addEventListener('click', (e) => {
     e.preventDefault()
     getCityCoordinates(Searchcity.value.toUpperCase())
@@ -142,6 +149,7 @@ search.addEventListener('click', (e) => {
     removeNone()
 }) 
 
+// gets the last searched city from local storage
 function init() {
     getLastSearch()
 }
