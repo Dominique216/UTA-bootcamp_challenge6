@@ -47,14 +47,14 @@ function getCurrWeather(lat, lon) {
         currTemp[0].textContent = 'Temp: '+ data.main.temp
         currWind[0].textContent = 'Wind: '+ data.wind.speed
         currHum[0].textContent = 'Humidity: '+ data.main.humidity
-        currIconText[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`) 
+        currIconText[0].setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`) 
 
         })
 }
 
 // getting and setting 5-day-forecast data from  5-day-forecast API
 function getWeather(lat, lon) {
-    weatherUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=43d8ab20052afee7eb5ccc2b3db69764&units=imperial'
+    weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=43d8ab20052afee7eb5ccc2b3db69764&units=imperial'
 
     fetch(weatherUrl)
         .then(function (response) {
@@ -97,23 +97,24 @@ function getWeather(lat, lon) {
         wind6[0].textContent = 'Wind: '+ data.list[34].wind.speed
         hum6[0].textContent = 'Humidity: '+ data.list[34].main.humidity
 
-        icon1[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[2].weather[0].icon}@2x.png`)
-        icon2[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[10].weather[0].icon}@2x.png`)
-        icon3[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[18].weather[0].icon}@2x.png`)
-        icon4[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[26].weather[0].icon}@2x.png`)
-        icon5[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[34].weather[0].icon}@2x.png`)
+        icon1[0].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[2].weather[0].icon}@2x.png`)
+        icon2[0].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[10].weather[0].icon}@2x.png`)
+        icon3[0].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[18].weather[0].icon}@2x.png`)
+        icon4[0].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[26].weather[0].icon}@2x.png`)
+        icon5[0].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[34].weather[0].icon}@2x.png`)
 
         })  
 }
 
 // getting the lattitude and longitude from the city that is input
 function getCityCoordinates (city) {
-    requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city +'&limit=1&appid=43d8ab20052afee7eb5ccc2b3db69764';
+    requestUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city +'&limit=1&appid=43d8ab20052afee7eb5ccc2b3db69764';
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
         }) 
         .then(function (data) {
+            console.log(data)
             var lat = data[0].lat;
             var lon = data[0].lon;
             getWeather(lat, lon);

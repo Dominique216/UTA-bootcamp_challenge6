@@ -12,4 +12,5 @@ HTML <br>
 CSS <br>
 JavaScript - jQuery <br>
 
-## Deployed GitHub Link
+## Deployed GitPages Link
+https://dominique216.github.io/UTA-bootcamp_challenge6/
