@@ -47,6 +47,7 @@ input{
 
 
 .last-search-section{
+    position:absolute;
     margin: 3%;
     width: 25%;
 }
@@ -63,27 +64,31 @@ input{
 }
 
 .current-day-forecast {
-    margin-top: -40vh;
+    position: absolute;
+    background-color: navy;
+    color: white;
+    margin-top: -20vh;
     margin-left: 30vw;
-    height: 25vh;
+    height: 30vh;
     width: 65vw;
-    border: solid black 1px
+    border: solid gray 3px
 }
 
 .current-title {
     padding: 2% 0 0 2%;
     font-size: 1.5rem;
-    margin-bottom: 2.5%;
+    margin-bottom: 1%;
 }
 
-.curr-temp, .curr-wind, .curr-hum {
+.Currp{
     padding: 1% 0 0 2%;
 }
 
 .five-day-forecast {
+    margin-top: 10vh;
     display: flex;
-    height: 35vh;
-    width: 70vw;
+    height: 42vh;
+    width: 72vw;
     margin-left: 27.8vw;
 }
 
@@ -92,7 +97,8 @@ input{
     height: 25vh;
     width: 50vw;
     margin: 8% 3%;
-    background-color: rgb(9, 9, 47);
+    background-color: navy;
+    border: solid gray 3px;
 }
 
 h3{
@@ -106,9 +112,14 @@ h4 {
     margin-bottom: 5%;
 }
 
-.temp, .wind, .hum {
+.Cardp {
     margin-left: 2%;
     padding-top: 10% 
+}
+
+img{
+    height: 7vh;
+    width: 5vw;
 }
 
 .none {

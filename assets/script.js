@@ -1,20 +1,31 @@
 
 
 var search = document.querySelector('.search-btn');
-var city = document.getElementById('city');
+var Searchcity = document.getElementById('city');
 
-function setLastSearch() {
+function setLastSearch(city) {
     lastSeach = {
-        lastCity: city.value.toUpperCase()
+        lastCity: city
     }
 
     localStorage.setItem('lastSearch', JSON.stringify(lastSeach))
 }
 
 function getLastSearch() {
-    var lastCitySearch = JSON.parse(localStorage.getItem("lastSearch"))
-    $('.last-search-section').append(`<button class="last-search">${lastCitySearch.lastCity}</button>`)
-
+    var lastCitySearch = JSON.parse(localStorage.getItem("lastSearch")) 
+    if(lastCitySearch.lastCity !== '') {
+       $('.last-search-section').append(`<button class="last-search">${lastCitySearch.lastCity}</button>`) 
+        var lastSearchBtn = $('.last-search')
+        for (let i = 0; i < lastSearchBtn.length; i++) {
+            lastSearchBtn[i].addEventListener('click', (e) => {
+            e.preventDefault()
+            var preCity = lastSearchBtn[i].textContent
+            getCityCoordinates(preCity)
+            getDay(preCity)
+            setLastSearch(preCity)
+            })     
+        }
+    }
 }
 
 
@@ -26,18 +37,15 @@ function getCurrWeather(lat, lon) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data)
-            var currtempinfo = data.main.temp
-            var currwindinfo = data.wind.speed
-            var currhuminfo = data.main.humidity
-
         var currTemp = $('.curr-temp1')
         var currWind = $('.curr-wind1')
         var currHum = $('.curr-hum1')
+        var currIconText = $('#currIcon')
+        currTemp[0].textContent = 'Temp: '+ data.main.temp
+        currWind[0].textContent = 'Wind: '+ data.wind.speed
+        currHum[0].textContent = 'Humidity: '+ data.main.humidity
+        currIconText[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`) 
 
-        currTemp[0].textContent = 'Temp: '+ currtempinfo
-        currWind[0].textContent = 'Wind: '+ currwindinfo
-        currHum[0].textContent = 'Humidity: '+ currhuminfo
         })
 }
 
@@ -50,21 +58,6 @@ function getWeather(lat, lon) {
             return response.json();
         })
         .then(function (data) {
-            var temp1info = data.list[2].main.temp
-            var wind1info = data.list[2].wind.speed
-            var hum1info = data.list[2].main.humidity
-            var temp2info = data.list[10].main.temp
-            var wind2info = data.list[10].wind.speed
-            var hum2info =data.list[10].main.humidity
-            var temp3info = data.list[18].main.temp
-            var wind3info = data.list[18].wind.speed
-            var hum3info =data.list[18].main.humidity
-            var temp4info = data.list[26].main.temp
-            var wind4info = data.list[26].wind.speed
-            var hum4info =data.list[26].main.humidity
-            var temp5info = data.list[34].main.temp
-            var wind5info = data.list[34].wind.speed
-            var hum5info =data.list[34].main.humidity
         var temp2 = $('.temp2')
         var wind2 = $('.wind2')
         var hum2 = $('.hum2')
@@ -80,27 +73,38 @@ function getWeather(lat, lon) {
         var temp6 = $('.temp6')
         var wind6 = $('.wind6')
         var hum6 = $('.hum6')
-        temp2[0].textContent = 'Temp: '+ temp1info
-        wind2[0].textContent = 'Wind: '+ wind1info
-        hum2[0].textContent = 'Humidity: '+ hum1info
-        temp3[0].textContent = 'Temp: '+ temp2info
-        wind3[0].textContent = 'Wind: '+ wind2info
-        hum3[0].textContent = 'Humidity: '+ hum2info
-        temp4[0].textContent = 'Temp: '+ temp3info
-        wind4[0].textContent = 'Wind: '+ wind3info
-        hum4[0].textContent = 'Humidity: '+ hum3info
-        temp5[0].textContent = 'Temp: '+ temp4info
-        wind5[0].textContent = 'Wind: '+ wind4info
-        hum5[0].textContent = 'Humidity: '+ hum4info
-        temp6[0].textContent = 'Temp: '+ temp5info
-        wind6[0].textContent = 'Wind: '+ wind5info
-        hum6[0].textContent = 'Humidity: '+ hum5info
-        })
-       
+        var icon1 = $('#card1icon')
+        var icon2 = $('#card2icon')
+        var icon3 = $('#card3icon')
+        var icon4 = $('#card4icon')
+        var icon5 = $('#card5icon')
+        temp2[0].textContent = 'Temp: '+ data.list[2].main.temp
+        wind2[0].textContent = 'Wind: '+ data.list[2].wind.speed
+        hum2[0].textContent = 'Humidity: '+ data.list[2].main.humidity
+        temp3[0].textContent = 'Temp: '+ data.list[10].main.temp
+        wind3[0].textContent = 'Wind: '+ data.list[10].wind.speed
+        hum3[0].textContent = 'Humidity: '+ data.list[10].main.humidity
+        temp4[0].textContent = 'Temp: '+ data.list[18].main.temp
+        wind4[0].textContent = 'Wind: '+ data.list[18].wind.speed
+        hum4[0].textContent = 'Humidity: '+ data.list[18].main.humidity
+        temp5[0].textContent = 'Temp: '+ data.list[26].main.temp
+        wind5[0].textContent = 'Wind: '+ data.list[26].wind.speed
+        hum5[0].textContent = 'Humidity: '+ data.list[26].main.humidity
+        temp6[0].textContent = 'Temp: '+ data.list[34].main.temp
+        wind6[0].textContent = 'Wind: '+ data.list[34].wind.speed
+        hum6[0].textContent = 'Humidity: '+ data.list[34].main.humidity
+
+        icon1[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[2].weather[0].icon}@2x.png`)
+        icon2[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[10].weather[0].icon}@2x.png`)
+        icon3[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[18].weather[0].icon}@2x.png`)
+        icon4[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[26].weather[0].icon}@2x.png`)
+        icon5[0].setAttribute('src', `http://openweathermap.org/img/wn/${data.list[34].weather[0].icon}@2x.png`)
+
+        })  
 }
 
-function getCityCoordinates () {
-    requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city.value.toUpperCase() +'&limit=1&appid=43d8ab20052afee7eb5ccc2b3db69764';
+function getCityCoordinates (city) {
+    requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city +'&limit=1&appid=43d8ab20052afee7eb5ccc2b3db69764';
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
@@ -113,10 +117,10 @@ function getCityCoordinates () {
         })
 }
 
-function getDay() {
+function getDay(city) {
     var date = dayjs().format('MM/DD/YYYY')
     var currDay = $('.current-title')
-    currDay[0].textContent = city.value.toUpperCase() + ' ' + date
+    currDay[0].textContent = city+ ' ' + date
 
     var nextFiveDays = $('h4')
     for(let i = 0; i < nextFiveDays.length; i++) {
@@ -131,9 +135,9 @@ function removeNone() {
 
 search.addEventListener('click', (e) => {
     e.preventDefault()
-    getCityCoordinates()
-    getDay()
-    setLastSearch()
+    getCityCoordinates(Searchcity.value.toUpperCase())
+    getDay(Searchcity.value.toUpperCase() )
+    setLastSearch(Searchcity.value.toUpperCase())
     getLastSearch()
     removeNone()
 }) 
