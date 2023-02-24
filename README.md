@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-# UTA-bootcamp_challenge6
+# Weather App
 
 ## Description
 This is a weather application meant to take in a city name and output a current day forecast and the forecast for the next 5 days. The user's previous input should also be saved and shown under the search bar.
