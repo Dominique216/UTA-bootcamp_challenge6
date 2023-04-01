@@ -17,7 +17,7 @@ function setLastSearch(city) {
 function getLastSearch() {
     var lastCitySearch = JSON.parse(localStorage.getItem("lastSearch")) 
     if(lastCitySearch.lastCity !== '') {
-       $('.last-search-section').append(`<button class="last-search">${lastCitySearch.lastCity}</button>`) 
+       $('.last-search-section').append(`<button class="last-search btn btn-secondary w-75 mt-2 mb-2">${lastCitySearch.lastCity}</button>`) 
         var lastSearchBtn = $('.last-search')
         for (let i = 0; i < lastSearchBtn.length; i++) {
             lastSearchBtn[i].addEventListener('click', (e) => {
@@ -44,9 +44,9 @@ function getCurrWeather(lat, lon) {
         var currWind = $('.curr-wind1')
         var currHum = $('.curr-hum1')
         var currIconText = $('#currIcon')
-        currTemp[0].textContent = 'Temp: '+ data.main.temp
-        currWind[0].textContent = 'Wind: '+ data.wind.speed
-        currHum[0].textContent = 'Humidity: '+ data.main.humidity
+        currTemp[0].textContent = data.main.temp + '  \u00B0F'
+        currWind[0].textContent = data.wind.speed + ' mph'
+        currHum[0].textContent = data.main.humidity + '%'
         currIconText[0].setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`) 
 
         })
@@ -81,21 +81,21 @@ function getWeather(lat, lon) {
         var icon3 = $('#card3icon')
         var icon4 = $('#card4icon')
         var icon5 = $('#card5icon')
-        temp2[0].textContent = 'Temp: '+ data.list[2].main.temp
-        wind2[0].textContent = 'Wind: '+ data.list[2].wind.speed
-        hum2[0].textContent = 'Humidity: '+ data.list[2].main.humidity
-        temp3[0].textContent = 'Temp: '+ data.list[10].main.temp
-        wind3[0].textContent = 'Wind: '+ data.list[10].wind.speed
-        hum3[0].textContent = 'Humidity: '+ data.list[10].main.humidity
-        temp4[0].textContent = 'Temp: '+ data.list[18].main.temp
-        wind4[0].textContent = 'Wind: '+ data.list[18].wind.speed
-        hum4[0].textContent = 'Humidity: '+ data.list[18].main.humidity
-        temp5[0].textContent = 'Temp: '+ data.list[26].main.temp
-        wind5[0].textContent = 'Wind: '+ data.list[26].wind.speed
-        hum5[0].textContent = 'Humidity: '+ data.list[26].main.humidity
-        temp6[0].textContent = 'Temp: '+ data.list[34].main.temp
-        wind6[0].textContent = 'Wind: '+ data.list[34].wind.speed
-        hum6[0].textContent = 'Humidity: '+ data.list[34].main.humidity
+        temp2[0].textContent = 'Temp: '+ data.list[2].main.temp + '  \u00B0F'
+        wind2[0].textContent = 'Wind: '+ data.list[2].wind.speed + ' mph'
+        hum2[0].textContent = 'Humidity: '+ data.list[2].main.humidity + '%'
+        temp3[0].textContent = 'Temp: '+ data.list[10].main.temp + '  \u00B0F'
+        wind3[0].textContent = 'Wind: '+ data.list[10].wind.speed + ' mph'
+        hum3[0].textContent = 'Humidity: '+ data.list[10].main.humidity + '%'
+        temp4[0].textContent = 'Temp: '+ data.list[18].main.temp + '  \u00B0F'
+        wind4[0].textContent = 'Wind: '+ data.list[18].wind.speed + ' mph'
+        hum4[0].textContent = 'Humidity: '+ data.list[18].main.humidity + '%'
+        temp5[0].textContent = 'Temp: '+ data.list[26].main.temp + '  \u00B0F'
+        wind5[0].textContent = 'Wind: '+ data.list[26].wind.speed + ' mph'
+        hum5[0].textContent = 'Humidity: '+ data.list[26].main.humidity + '%'
+        temp6[0].textContent = 'Temp: '+ data.list[34].main.temp + '  \u00B0F'
+        wind6[0].textContent = 'Wind: '+ data.list[34].wind.speed + ' mph'
+        hum6[0].textContent = 'Humidity: '+ data.list[34].main.humidity + '%'
 
         icon1[0].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[2].weather[0].icon}@2x.png`)
         icon2[0].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[10].weather[0].icon}@2x.png`)
@@ -126,9 +126,10 @@ function getCityCoordinates (city) {
 function getDay(city) {
     var date = dayjs().format('MM/DD/YYYY')
     var currDay = $('.current-title')
-    currDay[0].textContent = city+ ' ' + date
+    currDay[0].textContent = city + ' ' + date
 
     var nextFiveDays = $('h4')
+
     for(let i = 0; i < nextFiveDays.length; i++) {
         nextFiveDays[i].textContent = dayjs().add([i], 'day')
     }
@@ -136,8 +137,8 @@ function getDay(city) {
 
 // removes the class of none from weather information
 function removeNone() {
-    $('#currWeather').removeClass('none')
-    $('#allCards').removeClass('none')
+    $('#currWeather').removeClass('d-none')
+    $('#allCards').removeClass('d-none')
 }
 
 // runs all functions once the search button is pressed

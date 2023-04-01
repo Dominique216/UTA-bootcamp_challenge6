@@ -1,14 +1,10 @@
 
-header {
-    height: 10vh;
-    width: 100vw;
+/* header {
     background-color: navy;
     color: white;
-    text-align: center;
-    font-size: 2.0rem;
-}
+} */
 
-h1 {
+/* h1 {
     padding-top: 1.5%;
 }
 
@@ -61,9 +57,9 @@ input{
     box-shadow: none;
     border: none;
     border-radius: 6px;
-}
+} */
 
-.current-day-forecast {
+/* .current-day-forecast {
     position: absolute;
     background-color: navy;
     color: white;
@@ -72,9 +68,9 @@ input{
     height: 30vh;
     width: 65vw;
     border: solid gray 3px
-}
+} */
 
-.current-title {
+/* .current-title {
     padding: 2% 0 0 2%;
     font-size: 1.5rem;
     margin-bottom: 1%;
@@ -115,12 +111,12 @@ h4 {
 .Cardp {
     margin-left: 2%;
     padding-top: 10% 
-}
+}*/
 
 img{
     height: 7vh;
     width: 5vw;
-}
+} 
 
 .none {
     display: none
